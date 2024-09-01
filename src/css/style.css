@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    color: #2c3e50;
+    background: #f6f6f6;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 800px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    background: url('../img/back-paper.png');
+    background-size: contain;
+    border-top: 22px solid rgb(192, 191, 189);
+    border-radius: 10px;
+}
+
+.popup__choose-name {
+    box-sizing: border-box;
+    width: 400px;
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.popup-title {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 21px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.field-input-name {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 350px;
+}
+
+.popup_btn-continue {
+    margin-top: 13px;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 9px 67px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.popup_btn-continue:hover {
+    background-color: #e7e0e0b3;
+
+}
+
+.error-message {
+    box-sizing: border-box;
+    width: 300px;
+    position: absolute;
+    background: white;
+    border: 1px solid rgb(120, 9, 9);
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 1rem;
+    color: rgb(163, 17, 17); 
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none
+
+}
