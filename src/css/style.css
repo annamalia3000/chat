@@ -14,7 +14,7 @@ body {
 .container {
     margin: 0 auto;
     max-width: 800px;
-    min-height: 300px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,6 +44,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 
+    display: none;
+
 }
 
 .popup-title {
@@ -72,7 +74,6 @@ body {
 }
 .popup_btn-continue:hover {
     background-color: #e7e0e0b3;
-
 }
 
 .error-message {
@@ -90,5 +91,66 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none
+}
+
+.users {
+    box-sizing: border-box;
+    width: 300px;
+    background: white;
+    border: 1px solid rgb(120, 9, 9);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    margin-left: 10px;
+
+    position: absolute;
+    left: 0;
+
+}
+
+.users-list {
+    list-style: none;
+    padding: 0;
+}
+
+.user {
+    margin-bottom: 5px;
+}
+
+.user::before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.chat {
+    box-sizing: border-box;
+    width: 400px;
+    height: 400px;
+    background: white;
+    border: 1px solid rgb(120, 9, 9);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+
+}
+
+.message-input {
+    resize: none;
+    width: 100%;
+    margin-top: 10px;
 
 }
