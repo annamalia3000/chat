@@ -1,1 +1,2 @@
 import './chekNickname';
+import './ws';

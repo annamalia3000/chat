@@ -44,7 +44,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    display: none;
+    display: flex;
 
 }
 
@@ -72,6 +72,7 @@ body {
     font-size: 1rem;
     cursor: pointer;
 }
+
 .popup_btn-continue:hover {
     background-color: #e7e0e0b3;
 }
@@ -90,7 +91,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     display: none
+}
+
+.chat-widget {
+    width: 100%;
+    display: none;
 }
 
 .users {
@@ -120,35 +127,39 @@ body {
 .user::before {
     content: '';
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     border: 1px solid black;
     border-radius: 50%;
     margin-right: 4px;
+    vertical-align: middle;
 }
 
-.chat {
+.chat-container {
     box-sizing: border-box;
     width: 400px;
-    height: 400px;
+    min-height: 350px;
+    max-height: 450px;
     background: white;
     border: 1px solid rgb(120, 9, 9);
     border-radius: 10px;
     padding: 5px 10px;
     font-size: 1rem;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-30%, -50%);
     display: flex;
     flex-direction: column;
-}
-
-.messages {
+    justify-content: flex-end;
 
 }
 
-.message-input {
+.chat {
+    
+}
+
+.chat-message {
     resize: none;
     width: 100%;
     margin-top: 10px;

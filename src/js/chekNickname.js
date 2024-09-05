@@ -1,5 +1,8 @@
+import { addUserToList } from './addUserToList';
 import { hideErrorMessage } from './hideErrorMessage'; 
+
 const baseURL = 'http://localhost:3000';
+let currentUserName = null;
 
 export async function checkNickname() {
     const nicknameInput = document.querySelector('.field-input-name');
@@ -32,7 +35,23 @@ export async function checkNickname() {
             if (result.status === 'ok') {
                 console.log('Никнейм зарегистрирован:', result.user.name);
                 document.querySelector('.popup__choose-name').style.display = 'none';
-                // Здесь откройте окно чата
+                document.querySelector('.chat-widget').style.display = 'block';
+                
+                const usersList = document.querySelector('.users-list');
+                usersList.innerHTML = ''; 
+                addUserToList(result.user);
+
+                currentUserName = result.user.name;
+                
+                const usersElements = usersList.querySelectorAll('.user');
+                usersElements.forEach(user => {
+                    if (user.dataset.id === result.user.id) {
+                        user.textContent = 'You';
+                    }
+                });
+
+                nicknameInput.value = '';
+
             } else {
                 throw new Error(result.message);
             }
