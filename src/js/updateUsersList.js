@@ -23,9 +23,9 @@ export function updateUsersList(users) {
         user.remove();
     });
 
-    usersList.querySelectorAll('.user').forEach(user => {
-        if (user.dataset.id === currentUserId) {
-            user.textContent = 'You'; 
-        }
-    });
+    // const usersNode = document.createElement('li');
+
+    // usersNode.textContent = users;
+    // usersList.appendChild(usersNode);
+
 }

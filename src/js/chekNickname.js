@@ -1,8 +1,9 @@
 import { addUserToList } from './addUserToList';
 import { hideErrorMessage } from './hideErrorMessage'; 
+import { initializeWebSocketConnection } from './ws';
 
 const baseURL = 'http://localhost:3000';
-let currentUserName = null;
+export let currentUserName = null;
 
 export async function checkNickname() {
     const nicknameInput = document.querySelector('.field-input-name');
@@ -42,6 +43,7 @@ export async function checkNickname() {
                 addUserToList(result.user);
 
                 currentUserName = result.user.name;
+                initializeWebSocketConnection(currentUserName);
                 
                 const usersElements = usersList.querySelectorAll('.user');
                 usersElements.forEach(user => {
