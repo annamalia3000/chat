@@ -1,4 +1,4 @@
-import { currentUserName } from './checkNickname.js';
+import { getCurrentUserName } from './chekNickname.js';
 import { formatDate } from './formatDate';
 
 export function addMessageToChat(message, author) {
@@ -24,6 +24,7 @@ export function addMessageToChat(message, author) {
     messageText.textContent = message;
     messageText.classList.add('message-text'); 
 
+    const currentUserName = getCurrentUserName();
     if (author === currentUserName) {
         messageAuthor.textContent = 'You';
         messageNode.classList.add('my-message'); 

@@ -1,6 +1,5 @@
 import { updateUsersList } from './updateUsersList';
 import { addMessageToChat } from './addMessageToChat';
-import { addUserToList } from './addUserToList';
 
 export function initializeWebSocketConnection(userName) {
     const ws = new WebSocket('ws://localhost:3000/ws');

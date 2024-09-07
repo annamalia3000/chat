@@ -3,9 +3,14 @@ import { hideErrorMessage } from './hideErrorMessage';
 import { initializeWebSocketConnection } from './ws';
 
 const baseURL = 'http://localhost:3000';
-export let currentUserName = null;
+let currentUserName = null;
+
+export function getCurrentUserName() {
+    return currentUserName;
+}
 
 export async function checkNickname() {
+    let currentUserName = null;
     const nicknameInput = document.querySelector('.field-input-name');
     const nickname = nicknameInput.value.trim();
     const errorMessage = document.querySelector('.error-message');
