@@ -1,4 +1,4 @@
-import { currentUserName } from '/Users/Annamalia/Desktop/chat-frontend/src/js/chekNickname.js';
+import { currentUserName } from './checkNickname.js';
 import { formatDate } from './formatDate';
 
 export function addMessageToChat(message, author) {
