@@ -1,5 +1,5 @@
-import { getCurrentUserName } from './chekNickname.js';
 import { formatDate } from './formatDate';
+import { getCurrentUserName } from './getName';
 
 export function addMessageToChat(message, author) {
     const chat = document.querySelector('.chat');
@@ -23,8 +23,9 @@ export function addMessageToChat(message, author) {
     const messageText = document.createElement('div');
     messageText.textContent = message;
     messageText.classList.add('message-text'); 
-
+    
     const currentUserName = getCurrentUserName();
+
     if (author === currentUserName) {
         messageAuthor.textContent = 'You';
         messageNode.classList.add('my-message'); 

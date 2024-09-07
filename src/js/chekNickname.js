@@ -1,16 +1,12 @@
 import { addUserToList } from './addUserToList';
 import { hideErrorMessage } from './hideErrorMessage'; 
 import { initializeWebSocketConnection } from './ws';
+import { setCurrentUserName } from './getName'; 
 
 const baseURL = 'http://localhost:3000';
-let currentUserName = null;
-
-export function getCurrentUserName() {
-    return currentUserName;
-}
 
 export async function checkNickname() {
-    let currentUserName = null;
+    let currentUserName = null; 
     const nicknameInput = document.querySelector('.field-input-name');
     const nickname = nicknameInput.value.trim();
     const errorMessage = document.querySelector('.error-message');
@@ -23,8 +19,9 @@ export async function checkNickname() {
             document.addEventListener('click', hideErrorMessage);
         }, 0);
 
-        return;
+        return null;
     }
+
     document.removeEventListener('click', hideErrorMessage);
 
     try {
@@ -48,6 +45,9 @@ export async function checkNickname() {
                 addUserToList(result.user);
 
                 currentUserName = result.user.name;
+
+                setCurrentUserName(currentUserName);
+
                 initializeWebSocketConnection(currentUserName);
                 
                 const usersElements = usersList.querySelectorAll('.user');
@@ -59,6 +59,8 @@ export async function checkNickname() {
                 });
 
                 nicknameInput.value = '';
+
+                return currentUserName; 
 
             } else {
                 throw new Error(result.message);
@@ -76,4 +78,6 @@ export async function checkNickname() {
         errorMessage.textContent = error.message;
         errorMessage.style.display = 'block';
     }
+
+    return null; 
 }
