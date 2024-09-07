@@ -49,6 +49,7 @@ export async function checkNickname() {
                 usersElements.forEach(user => {
                     if (user.dataset.id === result.user.id) {
                         user.textContent = 'You';
+                        user.classList.add('my-nickname');
                     }
                 });
 
@@ -71,5 +72,3 @@ export async function checkNickname() {
         errorMessage.style.display = 'block';
     }
 }
-
-document.querySelector('.popup_btn-continue').addEventListener('click', checkNickname);

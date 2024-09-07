@@ -1,5 +1,6 @@
 import { updateUsersList } from './updateUsersList';
 import { addMessageToChat } from './addMessageToChat';
+import { addUserToList } from './addUserToList';
 
 export function initializeWebSocketConnection(userName) {
     const ws = new WebSocket('ws://localhost:3000/ws');
@@ -28,28 +29,23 @@ export function initializeWebSocketConnection(userName) {
         console.log('WebSocket соединение открыто:', e);
         if (userName) {
             ws.send(JSON.stringify({
-                type: 'new-user',  
+                type: 'new-user',
                 name: userName
             }));
         }
     });
 
-    ws.addEventListener('close', (e) => {
-        console.log('WebSocket соединение закрыто:', e);
-    });
-
     ws.addEventListener('message', (e) => {
-        console.log(e);
-
         const data = JSON.parse(e.data);
 
         if (data.type === 'update-users') {
-            updateUsersList(data.users);
+            updateUsersList(data.users); 
+        }
 
-            const currentUser = data.users.find(user => user.name === userName);
-            if (currentUser) {
-                console.log('Текущий пользователь:', currentUser);
-            }
+        if (data.type === 'message-history') {
+            data.messages.forEach(message => {
+                addMessageToChat(message.text, message.author);
+            });
         }
 
         if (data.type === 'new-message') {
@@ -57,9 +53,20 @@ export function initializeWebSocketConnection(userName) {
         }
     });
 
+    ws.addEventListener('close', (e) => {
+        console.log('WebSocket соединение закрыто:', e);
+    });
+
     ws.addEventListener('error', (e) => {
         console.log('Ошибка WebSocket:', e);
     });
 
+    window.addEventListener('beforeunload', () => {
+        if (userName) {
+            ws.send(JSON.stringify({
+                type: 'exit',
+                name: userName
+            }));
+        }
+    });
 }
-

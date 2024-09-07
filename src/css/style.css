@@ -60,6 +60,7 @@ body {
     font-size: 1rem;
     line-height: 1.5rem;
     width: 350px;
+    border: 1px solid black;
 }
 
 .popup_btn-continue {
@@ -137,9 +138,8 @@ body {
 
 .chat-container {
     box-sizing: border-box;
-    width: 400px;
-    min-height: 350px;
-    max-height: 450px;
+    width: 550px;
+    height: 90vh;
     background: white;
     border: 1px solid rgb(120, 9, 9);
     border-radius: 10px;
@@ -156,12 +156,42 @@ body {
 }
 
 .chat {
-    
+    overflow-y: auto
 }
 
 .chat-message {
     resize: none;
     width: 100%;
     margin-top: 10px;
+}
+.message-info {
+    font-size: 0.8rem;
+    color: gray;
+    display: flex;
+    gap: 3px;
+    margin-bottom: 5px;
+}
 
+.my-message .message-info {
+    font-size: 0.8rem;
+    color: gray;
+    display: flex;
+    justify-content: flex-end;
+    gap: 3px;
+    color: rgb(255, 102, 0)
+}
+
+.message-text {
+    font-size: 1rem;
+    color: black;
+    margin-bottom: 15px;
+    
+}
+
+.my-message {
+    text-align: right;
+}
+
+.my-nickname {
+    color: rgb(255, 102, 0)
 }
